@@ -3,8 +3,8 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 from peft import PeftModel
 
 # Paths to model and adapter
-MODEL_PATH = r"C:\Users\j\Desktop\Erynn\gpt2-large"
-ADAPTER_PATH = r"C:\Users\j\Desktop\Erynn\erynn_adapter"
+MODEL_PATH = r"ORİGİNAL HUGGING FACE OPENAI/GPT-2 REPO MODEL PATH AND WEIGHTS"
+ADAPTER_PATH = r"LORA-ADAPTER-PATH"
 
 def load_model():
     """Load the model and tokenizer."""
@@ -14,7 +14,7 @@ def load_model():
         device_map="auto",
         torch_dtype=torch.float16
     )
-    # Add LoRA adapter
+    # Add LoRA adapter / fp4 FORMAT TENSOR
     model = PeftModel.from_pretrained(model, ADAPTER_PATH)
     # Load tokenizer
     tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
@@ -84,4 +84,5 @@ def main():
     print("\nTry your own instruction: get_response(model, tokenizer, 'Your instruction here')")
 
 if __name__ == "__main__":
+
     main()
